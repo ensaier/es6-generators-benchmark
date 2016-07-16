@@ -1,0 +1,14 @@
+{
+  "name": "es6-generators-benchmark",
+  "version": "0.2.1",
+  "description": "Compare generators with promises and callbacks",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Oleksandr Tryshchenko",
+  "license": "MIT",
+  "dependencies": {
+    "bootstrap": "^3.3.6"
+  }
+}
