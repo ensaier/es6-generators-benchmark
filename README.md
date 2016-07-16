@@ -4,7 +4,9 @@ Simple benchmark to compare different async implementations in JavaScript. It co
 - Generators
 - Promises
 - Callbacks
+
 # FAQ
+
 #### How does it work?
 It works pretty siple (like always). The flow:
 - Draw DOM and calculate initial data
