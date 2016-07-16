@@ -1,7 +1,7 @@
 (function() {
 	let result = [];
 	let i = 0;
-	let totalIterations = 1000;
+	let totalIterations = 50;
 	let asyncMockTime = 100;
 	let interval;
 
@@ -66,15 +66,15 @@
 	let iterables = [
 		{
 			self: generatorsBenchmark,
-			container: 'generatorsResult'
+			container: 'generators'
 		},
 		{
 			self: promisesBenchmark,
-			container: 'promisesResult'
+			container: 'promises'
 		},
 		{
 			self: callbacksBenchmark,
-			container: 'callbacksResult'
+			container: 'callbacks'
 		},
 	]
 
@@ -87,12 +87,16 @@
 			i++;
 			iterables[0].self();
 		} else {
+			let block = document.getElementById(iterables[0].container);
+			block.querySelector('.min').innerHTML = Math.round(Math.min(...result) * 10000) / 10000;
+			block.querySelector('.max').innerHTML = Math.round(Math.max(...result) * 10000) / 10000;
+
 			let sum = result.reduce((a, b) => {
 				return a + b;
 			});
 
 			// Draw results
-			document.getElementById(iterables[0].container).innerHTML = Math.round(sum/totalIterations * 10000) / 10000;
+			document.getElementById(iterables[0].container).querySelector('.result').innerHTML = Math.round(sum/totalIterations * 10000) / 10000;
 			if (iterables.length > 1) {
 				// Remove the object and new links from memory for garbage collector.
 				iterables[0].self = undefined;
@@ -118,7 +122,7 @@
 		document.getElementById('iterationTime').innerHTML = asyncMockTime + 5;
 		document.getElementById('estimatedTime').innerHTML = Math.round((asyncMockTime + 5) * totalIterations * iterables.length / 60000); // Minutes are more clear than miliseconds
 
-		setInterval(processBenchmark, asyncMockTime + 5);
+		interval = setInterval(processBenchmark, asyncMockTime + 5);
 	}
 
 	init();
