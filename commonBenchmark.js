@@ -45,7 +45,7 @@
 	};
 
 	/**
-	 * Benchmark decorator for spent time calculations
+	 * Callbacks bencmark
 	 * @return {[type]} [description]
 	 */
 	let callbacksBenchmark = () => {
